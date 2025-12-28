@@ -1,0 +1,28 @@
+[package]
+name = "scanner-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# CORRECTED: Redis version 0.27
+redis = { version = "0.27", features = ["tokio-comp"] }
+
+# Bybit connector (Must be hyphenated here)
+rust-bybit = "0.2"
+
+# Core Async and Networking
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = { version = "0.26", features = ["rustls-tls-native-roots"] }
+futures = "0.3"
+
+# Encryption and Data
+rustls = { version = "0.23", features = ["ring"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+openssl = { version = "0.10", features = ["vendored"] }
+url = "2.5"
+
+# --- NEW: Hyperliquid Support ---
+# This SDK handles the specific EIP-712 signing and L1 messaging for you
+hyperliquid_rust_sdk = "0.6"
+chrono = "0.4.42"
