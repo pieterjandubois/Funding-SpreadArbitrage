@@ -4,25 +4,27 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-# CORRECTED: Redis version 0.27
-redis = { version = "0.27", features = ["tokio-comp"] }
-
-# Bybit connector (Must be hyphenated here)
-rust-bybit = "0.2"
-
-# Core Async and Networking
-tokio = { version = "1", features = ["full"] }
+# Standard Async stack
+tokio = { version = "1.40", features = ["full"] }
 tokio-tungstenite = { version = "0.26", features = ["rustls-tls-native-roots"] }
 futures = "0.3"
 
-# Encryption and Data
-rustls = { version = "0.23", features = ["ring"] }
+# Data & Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-openssl = { version = "0.10", features = ["vendored"] }
+chrono = { version = "0.4", features = ["serde"] }
 url = "2.5"
 
-# --- NEW: Hyperliquid Support ---
-# This SDK handles the specific EIP-712 signing and L1 messaging for you
-hyperliquid_rust_sdk = "0.6"
-chrono = "0.4.42"
+# Database
+redis = { version = "0.27", features = ["tokio-comp", "connection-manager"] }
+
+# Exchange SDKs
+# Note: Using the official Hyperliquid SDK 0.6+ is safer for 2025 L1 changes
+# hyperliquid_rust_sdk = "0.6" 
+bybit = { package = "rust-bybit", version = "0.2" }
+
+# Security & Crypto
+rustls = { version = "0.23", features = ["ring"] }
+# 'vendored' is good for cross-compiling, keep it if you are on Linux/WSL
+openssl = { version = "0.10", features = ["vendored"] }
+reqwest = { version = "0.12.28", features = ["json"] }

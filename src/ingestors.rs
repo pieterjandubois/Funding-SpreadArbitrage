@@ -1,11 +1,11 @@
-#[path = "bin/binance_ingestor.rs"]
+#[path = "ingestors/binance_ingestor.rs"]
 pub mod binance;
 
-#[path = "bin/bybit_ingestor.rs"]
+#[path = "ingestors/bybit_ingestor.rs"]
 pub mod bybit;
 
-#[path = "bin/hyperliquid_ingestor.rs"]
+#[path = "ingestors/hyperliquid_ingestor.rs"]
 pub mod hyperliquid;
 
-#[path = "bin/scanner.rs"]
+#[path = "ingestors/scanner.rs"]
 pub mod scanner;
