@@ -41,4 +41,5 @@ async fn main() {
 
     // Join handles if scanner ever exits
     let _ = tokio::join!(binance, bybit, hyperliquid);
+
 }

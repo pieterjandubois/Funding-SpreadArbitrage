@@ -31,7 +31,7 @@ pub async fn run(symbols: Vec<String>) {
         }
     });
 
-    let redis_client = redis::Client::open("redis://127.0.0.1/").unwrap();
+    let redis_client = redis::Client::open("redis://localhost/").unwrap();
     let mut redis_conn = redis_client.get_multiplexed_async_connection().await.unwrap();
 
     let url = "wss://api.hyperliquid.xyz/ws";

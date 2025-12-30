@@ -47,7 +47,7 @@ pub async fn run() {
         .join("/");
     
     let url = format!("wss://stream.binance.com:9443/stream?streams={}", streams);
-    let redis_client = redis::Client::open("redis://127.0.0.1/").unwrap();
+    let redis_client = redis::Client::open("redis://localhost/").unwrap();
     let mut redis_conn = redis_client.get_multiplexed_async_connection().await.expect("Redis Fail");
 
     loop {
